@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.constraints.*;
@@ -13,10 +14,10 @@ import java.util.Map;
 @Data
 @Component
 @Validated
-@org.springframework.boot.context.properties.ConfigurationProperties(prefix = "pl.sdacademy.zad6")
+@ConfigurationProperties(prefix = "pl.sdacademy.zad6")
 @NoArgsConstructor
 @AllArgsConstructor
-public class ConfigurationProperties {
+public class Properties {
     @Email
     private String email;
     private String firstName;
