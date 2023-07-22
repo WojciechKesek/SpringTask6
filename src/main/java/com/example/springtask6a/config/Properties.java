@@ -23,7 +23,7 @@ public class Properties {
     private String firstName;
     @Length(min = 3, max = 20)
     private String lastName;
-    @Pattern(regexp = "[a-zA-Z]+ [0-9]+[a-zA-Z]*")
+    @Pattern(regexp = "\\w+ \\d+")
     private String address;
     @Min(value = 18)
     private int age;
