@@ -3,13 +3,10 @@ package com.example.springtask6a.config;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
@@ -25,13 +22,18 @@ public class ConfigurationProperties {
     private String firstName;
     @Length(min = 3, max = 20)
     private String lastName;
-    @Pattern(regexp = "[a-zA-Z]+ [0-9]+")
+    @Pattern(regexp = "[a-zA-Z]+ [0-9]+[a-zA-Z]*")
     private String address;
     @Min(value = 18)
     private int age;
-    @NonNull
+    @NotEmpty
     private List<String> values;
-    @NonNull
+    @NotEmpty
     private Map<String,String> customAttributes;
+
+    @AssertTrue(message = "Address field has to have two words")
+    private boolean isTwoWords(){
+        return address.split(" ").length == 2;
+    }
 
 }
